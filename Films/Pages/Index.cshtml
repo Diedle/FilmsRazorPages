@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    int numOfCols = 3;
+    double bootstrapColWidth = 12 / numOfCols;
+}
+
+<h2>Все фильмы</h2>
+<p><a href="/Create">Добавить фильм</a></p>
+<div class="row">
+
+    @foreach (var film in Model.Films)
+    {
+        <div class="col-md-@bootstrapColWidth">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@film.Title</h5>
+                    <p class="card-text">@film.Description</p>
+                    <form method="post">
+                    <a class="btn btn-primary" asp-page="Edit" asp-route-id="@film.Id">Редактировать</a>
+                    <button type="submit" class="btn btn-primary" asp-page-handler="delete" asp-route-id="@film.Id">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div> 
+    }
+</div>

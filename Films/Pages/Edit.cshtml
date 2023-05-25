@@ -1,0 +1,18 @@
+﻿@page "{id:int}"
+@model Films.Pages.EditModel
+@{
+}
+<h2>Редактирование данных</h2>
+
+<form method="post">
+    <input name="id" value="@Model.Film?.Id" type="hidden" />
+    <p>
+        <label>Имя</label><br />
+        <input name="title" value="@Model.Film?.Title" />
+    </p>
+    <p>
+        <label>Возраст</label><br />
+        <input name="description" value="@Model.Film?.Description" />
+    </p>
+    <input type="submit" value="Сохранить" />
+</form>
