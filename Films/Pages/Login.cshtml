@@ -1,0 +1,18 @@
+﻿@page
+@model Films.Pages.LoginModel
+@{
+}
+<body>
+    <h2>Login Form</h2>
+    <form method='post'>
+        <p>
+            <label>Email</label><br />
+            <input name='login' asp-for='User.login' />
+        </p>
+        <p>
+            <label>Password</label><br />
+            <input type='password' asp-for='User.password' name='password' />
+        </p>
+        <input type='submit' value='Login' />
+    </form>
+</body>
