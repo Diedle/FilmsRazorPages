@@ -1,15 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Films.Models
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Film> Films { get; set; } = null!;
-        public DbSet<User> Users { get; set; } = null!;
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
-        {
-            Database.EnsureCreated();  
+        { 
+            Database.EnsureCreated();
         }
+
+        public DbSet<Film> Films { get; set; } = null!;
     }
 }
