@@ -1,20 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using Films.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseSqlServer(connectionString));
 
-builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationContext>();
-builder.Services.AddHttpContextAccessor();
-// Add services to the container.
-builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options => options.LoginPath = "/login");
-builder.Services.AddAuthorization();
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationContext>();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -37,3 +34,4 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
