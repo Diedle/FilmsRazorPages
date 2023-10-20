@@ -18,22 +18,28 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-  background-color: #5B7065;
-
+    margin-bottom: 60px;
+    background-color: #5B7065;
+    border-radius: 5px;
 }
 
 .header {
+
     min-height: 50px;
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: #04202C;
-    text-align: center
+
+    text-align: center;
 }
 
 
 
 .container {
-    background-color: #04202C;
+    background-color: #304040;
     margin-bottom: 30px;
+    border-radius: 20px;
+}
+
+.maintext {
+    color: #C9D1C8
 }

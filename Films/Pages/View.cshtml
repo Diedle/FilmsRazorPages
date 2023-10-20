@@ -4,5 +4,41 @@
 }
 
 <form method="post">
-<h2>Вы смотрите фильм @Model.Film?.Title</h2>
+    <div class="film row">
+        <div class="col-7 maintext mb-3 mt-3  ">
+            <h2>@Model.Film?.Title</h2>
+        </div>
+        <div class="col-5 maintext mb-3 mt-3  ">
+            <h3>IMDb:</h3>
+        </div>
+        <section class="film row">
+            <div class="col-5 mb-4">
+                <img src="..." class="img-fluid" alt="...">
+            </div>
+            <div class="col-5 mb-3">
+                <p>Страна :            @Model.Film?.Title</p>
+                <p>Режисёр : @Model.Film?.Title;</p>
+
+            </div>
+
+        </section>
+        <section class="film row">
+            <div class="col-1 mb-4">
+                
+            </div>
+            <div class="col-10 mb-3">
+                <p>>@Model.Film?.Description</p>
+
+            </div>
+
+        </section>
+        <div class="col-3">
+
+        </div>
+        <div class="col-5 border-5">
+            <iframe width="560" height="315" src="@Model.Film?.Description" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
 </form>

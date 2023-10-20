@@ -5,13 +5,13 @@
     double bootstrapColWidth = 12 / numOfCols;
 }
 
-<h2>Недавно добавленные</h2>
+<h2 class="mt-3 mb-3 align-content-center maintext">Недавно добавленные</h2>
 <p><a href="/Create">Добавить фильм</a></p>
 <div class="row ">
     @foreach (var film in Model.Films)
     {
         <div class="col-md-@bootstrapColWidth ">
-            <div class="card border border-warning" style="width: 18rem;">
+            <div class="card border border-warning mb-5 mt-5" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">@film.Title</h5>
