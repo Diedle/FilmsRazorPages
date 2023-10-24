@@ -21,6 +21,8 @@ body {
     margin-bottom: 60px;
     background-color: #5B7065;
     border-radius: 5px;
+    background-image: url(https://i.pinimg.com/originals/39/49/0b/39490b7313f942544469e39483c14d42.jpg);
+    background-size: cover;
 }
 
 .header {
@@ -42,4 +44,8 @@ body {
 
 .maintext {
     color: #C9D1C8
+}
+
+.posterimg{
+    border-radius: 1px;
 }

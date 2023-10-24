@@ -12,12 +12,60 @@
             <h3>IMDb:</h3>
         </div>
         <section class="film row">
-            <div class="col-5 mb-4">
-                <img src="..." class="img-fluid" alt="...">
+            <div class="col-3 mb-4">
+                <img src="@Model.Film?.Img" class="posterimg" align="middle" alt="..." height="300">
             </div>
-            <div class="col-5 mb-3">
-                <p>Страна :            @Model.Film?.Title</p>
-                <p>Режисёр : @Model.Film?.Title;</p>
+            <div class="col-5 mb-3 maintext">
+                <table>
+                    <tr>
+                        <td>
+                            <h2>Дата выхода:</h2>
+                        </td>
+                        <td>
+                            <h2>@Model.Film?.Date</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2>Страна:</h2>
+                        </td>
+                        <td>
+                            <h2>@Model.Film?.Country</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2>Режисёр:</h2>
+                        </td>
+                        <td>
+                            <h2>@Model.Film?.Director</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2>Жанр:</h2>
+                        </td>
+                        <td>
+                            <h2>@Model.Film?.Genre</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2>Длительность:</h2>
+                        </td>
+                        <td>
+                            <h2>@Model.Film?.Time</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2>В ролях:</h2>
+                        </td>
+                        <td>
+                            <h2>@Model.Film?.InRole</h2>
+                        </td>
+                    </tr>
+                </table>
 
             </div>
 
@@ -26,8 +74,9 @@
             <div class="col-1 mb-4">
                 
             </div>
-            <div class="col-10 mb-3">
-                <p>>@Model.Film?.Description</p>
+            <div class="col-10 mb-3 maintext">
+                <h2>Описание</h2>
+                <p>@Model.Film?.Description</p>
 
             </div>
 
@@ -36,7 +85,7 @@
 
         </div>
         <div class="col-5 border-5">
-            <iframe width="560" height="315" src="@Model.Film?.Description" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="@Model.Film?.Trailer" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="col-3">
         </div>
