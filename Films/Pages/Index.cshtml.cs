@@ -1,6 +1,7 @@
 ﻿using Films.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Films.Pages
@@ -14,9 +15,26 @@ namespace Films.Pages
             context = db;
         }
 
-        public void OnGet()
+
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+
+        public SelectList? Genres { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string? MovieGenre { get; set; }
+
+        public async Task OnGetAsync()
         {
-            Films = context.Films.AsNoTracking().ToList();
+            var films = from m in context.Films
+                         select m;
+
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                films = films.Where(s => s.Title.Contains(SearchString));
+            }
+
+            Films = await films.ToListAsync();
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)
