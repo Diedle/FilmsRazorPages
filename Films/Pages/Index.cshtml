@@ -17,14 +17,16 @@
     {
         <div class="col-md-@bootstrapColWidth ">
             <div class="card border border-warning mb-5 mt-5" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <a asp-page="View" asp-route-id="@film?.Id">
+                <img src="@film?.Img" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">@film.Title</h5>
-                    <p class="card-text">@film.Description</p>
+                    <h5 class="card-title">@film?.Title</h5>
+                    <p class ="card-text">@film?.Date , @film?.Genre </p>
                     <form method="post">
-                    <a class="btn btn-primary" asp-page="View" asp-route-id="@film.Id">Смотреть</a>
-                    <a class="btn btn-primary" asp-page="Edit" asp-route-id="@film.Id">Редактировать</a>
-                    <button type="submit" class="btn btn-primary" asp-page-handler="delete" asp-route-id="@film.Id">Удалить</button>
+                    <a class="btn btn-primary" asp-page="View" asp-route-id="@film?.Id">Смотреть</a>
+                    <a class="btn btn-primary" asp-page="Edit" asp-route-id="@film?.Id">Редактировать</a>
+                    <button type="submit" class="btn btn-primary" asp-page-handler="delete" asp-route-id="@film?.Id">Удалить</button>
                     </form>
                 </div>
             </div>
