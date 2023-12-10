@@ -3,13 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Films.Pages;
-
+[IgnoreAntiforgeryToken]
 public class View : PageModel
 {
     ApplicationContext context;
     [BindProperty]
     public Film? Film { get; set; }
-    
+    [BindProperty]
+    public Comment comment { get; set; } = new();
+
     public View(ApplicationContext db)
     {
         context = db;
@@ -24,8 +26,8 @@ public class View : PageModel
     }
     public async Task<IActionResult> OnPostAsync()
     {
-        context.Films.Update(Film!);
+        context.Comments.Add(comment);
         await context.SaveChangesAsync();
-        return RedirectToPage("Index");
+        return RedirectToPage("View");
     }
 }

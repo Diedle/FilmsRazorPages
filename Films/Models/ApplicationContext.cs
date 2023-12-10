@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Films.Models
 {
-    public class ApplicationContext : IdentityDbContext<ApplicationUser>
+    public sealed class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
@@ -12,5 +12,7 @@ namespace Films.Models
         }
 
         public DbSet<Film> Films { get; set; } = null!;
+
+        public DbSet<Comment> Comments { get; set; } = null!;
     }
 }
