@@ -10,7 +10,9 @@ public class View : PageModel
     [BindProperty]
     public Film? Film { get; set; }
     [BindProperty]
-    public Comment comment { get; set; } = new();
+    public List<Comment> Comment { get; private set; } = new();
+    [BindProperty]
+    public Comment Comments { get; set; } = new();
 
     public View(ApplicationContext db)
     {
@@ -22,11 +24,17 @@ public class View : PageModel
 
         if (Film == null) return NotFound();
 
+        var comments = from m in context.Comments
+                    select m;
+
+        Comment = comments.ToList();
+        Comment.Reverse();
+
         return Page();
     }
     public async Task<IActionResult> OnPostAsync()
     {
-        context.Comments.Add(comment);
+        context.Comments.AddRange(Comments);
         await context.SaveChangesAsync();
         return RedirectToPage("View");
     }

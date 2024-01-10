@@ -1,4 +1,5 @@
 ﻿@page "{id:int}"
+@using Films.Models
 @model Films.Pages.View
 @{
 }
@@ -87,7 +88,7 @@
         </div>
         <div class="col-3">
         </div>
-        <section style="background-color: #d94125;">
+     
             <div class="container my-5 py-5 text-dark">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-6">
@@ -112,7 +113,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+
         <section class="gradient-custom">
             <div class="container my-5 py-5">
                 <div class="row d-flex justify-content-center">
@@ -120,7 +121,8 @@
                         <div class="card">
                             <div class="card-body p-4">
                                 <h4 class="text-center mb-4 pb-2">Nested comments section</h4>
-
+                                @foreach (var comment in Model.Comment)
+                                {
                                 <div class="row">
                                     <div class="col">
                                         <div class="d-flex flex-start">
@@ -135,14 +137,14 @@
                                                         </p>
                                                     </div>
                                                     <p class="small mb-0">
-                                                        It is a long established fact that a reader will be distracted by
-                                                        the readable content of a page.
+                                                        @comment?.Comm
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                }
                             </div>
                         </div>
                     </div>
