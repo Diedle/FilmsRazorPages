@@ -10,6 +10,8 @@ public class Comment
     public int Commid { get; set; }
     
     public string? Userid { get; set; }
-    
+
+    public string? Filmid { get; set; }
+
     public string? Comm { get; set; }
 }

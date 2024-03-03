@@ -34,6 +34,7 @@ public class View : PageModel
     }
     public async Task<IActionResult> OnPostAsync()
     {
+        Comments.Userid = User.Identity?.Name;
         context.Comments.AddRange(Comments);
         await context.SaveChangesAsync();
         return RedirectToPage("View");
