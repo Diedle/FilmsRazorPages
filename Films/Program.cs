@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Films.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
+using Films;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +11,7 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationContext>();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,9 +23,12 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseDefaultFiles();
+app.UseStaticFiles();   
 
 app.UseRouting();
+
+app.MapHub<ComHub>("/chat");
 
 app.UseAuthentication();
 app.UseAuthorization();
