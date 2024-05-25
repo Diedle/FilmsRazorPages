@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Windows;
+using FilmsCore.Models;
 
 namespace Films.Pages;
 [IgnoreAntiforgeryToken]
@@ -18,24 +19,6 @@ public class View : PageModel
     [BindProperty]
     public Comment Comments { get; set; } = new();
 
-    HubConnection connection;
-
-    public View()
-    {
-        connection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7098/chat")
-                .Build();
-
-        connection.On<string, string>("Receive", (user, message) =>
-        {
-            Dispatcher.Invoke(() =>
-            {
-                var newMessage = $"{user}: {message}";
-                chatbox.Items.Insert(0, newMessage);
-            });
-        });
-
-    }
     public View(ApplicationContext db)
     {
         context = db;

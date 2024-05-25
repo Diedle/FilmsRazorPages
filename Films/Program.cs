@@ -28,7 +28,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.MapHub<ComHub>("/chat");
 
 app.UseAuthentication();
 app.UseAuthorization();
